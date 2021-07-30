@@ -1,23 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link, Router } from '@reach/router';
 
 import { SearchArea } from './SearchArea';
+import { WatchArea } from './WatchArea';
 
 export const App = () => {
     return(
         <div>
             <header>
-                <h2>WeTube</h2>
+                <Link to="/">WeTube</Link>
             </header>
 
-            <SearchArea />
-
-            {/* <Video
-                title="The best video"
-                dateAdded="1 day"
-                channel="New video"
-                key="1"
-            /> */}
+            <Router>
+                <SearchArea path="/" />
+                <WatchArea path="/watch/:id" />
+            </Router>
 
         </div>
     )

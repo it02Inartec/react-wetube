@@ -14,6 +14,7 @@ export const Results = ({ videos }) => {
                             channel={ video.snippet.channelTitle }
                             thumbnail={ video.snippet.thumbnails.medium.url }
                             description={ video.snippet.description }
+                            id={ video.id.videoId }
                         />
                     )
                 })

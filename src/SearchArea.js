@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { Results } from './Results';
+import * as AppContant from './AppConstants';
 
 export const SearchArea = () => {
 
@@ -9,11 +10,9 @@ export const SearchArea = () => {
     const [videos, setVideos] = useState([]);
 
     const requestSearch = () => {
-        // maxResults=25 is for limit results (default=5)
-        axios.get(`https://youtube.googleapis.com/youtube/v3/search?type=video&q=${ keyword }&part=snippet&key=${ process.env.API_KEY }`)
+        axios.get(`${ AppContant.SEARCH_URL }&q=${ keyword }`)
         .then( ( res ) => {
             const { items } = res.data;
-            console.log(items)
             setVideos( items );
         })
         .catch( ( err ) => console.log( err ))

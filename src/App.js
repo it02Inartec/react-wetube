@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link, Router } from '@reach/router';
 
 import { SearchArea } from './SearchArea';
-import { WatchArea } from './WatchArea';
+import WhatAreaWithErrorBoundary from './WatchArea';
 
 export const App = () => {
     return(
@@ -14,7 +14,7 @@ export const App = () => {
 
             <Router>
                 <SearchArea path="/" />
-                <WatchArea path="/watch/:id" />
+                <WhatAreaWithErrorBoundary path="/watch/:id" />
             </Router>
 
         </div>

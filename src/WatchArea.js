@@ -3,9 +3,10 @@ import axios from 'axios';
 
 import * as AppContant from './AppConstants';
 import { FormatNumber } from './FormatNumber';
+import ErrorBoundary from './ErrorBoundary';
 
 // use class components
-export class WatchArea extends React.Component {
+class WatchArea extends React.Component {
     
     constructor() {
         super();
@@ -13,6 +14,7 @@ export class WatchArea extends React.Component {
     }
 
     componentDidMount() {
+        
         axios.get(`${ AppContant.VIDEO_URL }&id=${ this.props.id }`)
         .then( (res) => {
             const item = res.data.items[0];
@@ -75,4 +77,12 @@ export class WatchArea extends React.Component {
             </div>
         )
     }
+}
+
+export default function WhatAreaWithErrorBoundary( props ) {
+    return (
+        <ErrorBoundary>
+            <WatchArea {...props} />
+        </ErrorBoundary>
+    )
 }

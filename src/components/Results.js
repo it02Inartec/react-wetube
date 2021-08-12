@@ -1,10 +1,11 @@
 import React from 'react';
 import { Video } from './Video';
 
-export const Results = ({ videos }) => {
+export const Results = ({ videos, loading }) => {
     return (
         <div className="search-result">
             {
+                loading ? ( <div className="loader"></div> ) :
                 videos.map( ( video ) => {
                     return (
                         <Video

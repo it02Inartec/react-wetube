@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link, Router } from '@reach/router';
 
-import { SearchArea } from './SearchArea';
-import WhatAreaWithErrorBoundary from './WatchArea';
+import { SearchArea } from './components/SearchArea';
+import WhatAreaWithErrorBoundary from './components/WatchArea';
+import { ColorContext } from './contexts/ColorContext';
 
 export const App = () => {
+
+    const themeColor = useState('darkblue');
+
     return(
-        <div>
-            <header>
-                <Link to="/">WeTube</Link>
-            </header>
+        <ColorContext.Provider value={ themeColor }>
+            <div>
+                <header>
+                    <Link to="/">WeTube</Link>
+                </header>
 
-            <Router>
-                <SearchArea path="/" />
-                <WhatAreaWithErrorBoundary path="/watch/:id" />
-            </Router>
+                <Router>
+                    <SearchArea path="/" />
+                    <WhatAreaWithErrorBoundary path="/watch/:id" />
+                </Router>
 
-        </div>
+            </div>
+        </ColorContext.Provider>
     )
     // return React.createElement('div', { key: '1' }, [
     //     React.createElement('h2', { key: '01' }, 'WeTube'),
